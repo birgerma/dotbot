@@ -1,3 +1,19 @@
+# Qubes dom0 setup
+https://dataswamp.org/~solene/2023-06-17-qubes-os-git-bundle.html
+
+## Prerequisites
+git in both AppVM and dom0.
+In dom0: ```sudo qubes-dom0-update git```
+
+## Setup
+1. Clone repository to AppVM
+2. In dom0, run:
+```
+qvm-run -u user --pass-io <AppVM> "cd <path/to/AppVM/repo> && git bundle create - main" > /tmp/git.bundle
+cd ~/.config/ && git clone -b master /tmp/git.bundle repo
+```
+
+
 # Dotbot Template
 
 Template repository for advanced [Dotbot](https://github.com/anishathalye/dotbot) configuration.
