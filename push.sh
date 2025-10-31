@@ -10,4 +10,4 @@ AppVM=dotfiles
 git bundle create - origin/${BRANCH}..${BRANCH} | \
   qvm-run -u user --pass-io ${AppVM} "cat > /tmp/dom0.bundle"
 
-qvm-run -u user --pass-io ${AppVM} "cd ${REPO} && git pull -r dom0 ${BRANCH}"
+qvm-run -u user --pass-io ${AppVM} "cd ${REPO} && git pull -r /tmp/dom0.bundle ${BRANCH}"
