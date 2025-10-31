@@ -1,0 +1,69 @@
+configuration {
+	// modi:                        "drun,filebrowser,ssh,run,emoji,blu:rofi-bluetooth";
+ 	// modi:                          "drun,file-browser-extended,ssh,run,emoji,WIN:/home/marcus/.config/rofi/scripts/sway-window-switcher/sway-windows-modi.sh";
+    sidebar-mode:		       false;
+	show-icons:                    true;
+    matching:	               "fuzzy";	
+	display-drun:                  "";
+	display-run:                   "";
+	display-ssh:                   " SSH";
+	display-filebrowser:           "";
+	display-file-browser-extended: "";
+	display-window:                "";
+	display-emoji:                 "😀";
+	drun-display-format:           "{name}";
+    // font: "hack 50";
+        // combi-modi: "filebrowser,drun,ssh,emoji";
+	// window-format:               "{w} {n} {t}";
+	// window-format:               "class={c} W={w} name={n} r={r}";
+	window-format:                  "{c} {t}";
+	font:                           "JetBrainsMono Nerd Font 15";
+	icon-theme:                     "Tela-circle-dracula-dark";
+	terminal:					    "foot";
+	markup-rows:		            true;
+	case-sensitive:                 false;
+ }
+window {
+    height:   100%;
+    width: 30em;
+    location: west;
+    anchor:   west;
+    border:  0px 2px 0px 0px;
+//    text-color: @lightwhite;
+}
+
+// Glyphs
+// Bluetooth; 
+
+WIN {
+    markup-rows: true;
+}
+
+// https://github.com/marvinkreis/rofi-file-browser-extended
+file-browser-extended {
+    file-browser-cmd:                "exo-open";
+    file-browser-dir:                "/";                 
+    file-browser-depth:              2;                      
+    file-browser-open-multi-key:     "kb-accept-alt";
+    file-browser-open-custom-key:    "kb-custom-11";
+    file-browser-hide-hidden-symbol: "";
+    file-browser-path-sep:           "/";                    
+    file-browser-up-text:            "up";                    
+    file-browser-up-icon:            "go-previous";           
+    // file-browser-oc-search-path:                  
+    file-browser-oc-cmd:             "gimp;icon:gimp";
+    // file-browser-exclude workspace:
+    file-browser-exclude:            "*.pdf";
+    sidebar-mode:		     true;
+}
+
+// filebrowser {
+//         sidebar-mode:		     true;
+// }
+
+//file-browser-extended {
+//        sidebar-mode:		     true;
+//}
+
+
+@theme "/usr/share/rofi/themes/material.rasi"

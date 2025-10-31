@@ -1,0 +1,13 @@
+- link:
+    $HOME/.config/sway: sway/
+    $HOME/.config/waybar: waybar/
+    $HOME/.config/foot: foot/
+    $HOME/.config/fish: fish/
+    $HOME/.config/starship: starship/
+    $HOME/.config/tmux: tmux/
+    $HOME/.config/nvim: nvim/
+    $HOME/.config/rofi: rofi/
+    ~/.local/bin:
+      path: bin/**
+      glob: true
+      create: true   

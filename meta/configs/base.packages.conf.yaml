@@ -1,0 +1,18 @@
+
+- paru:
+  - git
+  - fish
+  - nvim
+  - emacs
+  - eza
+  - fd
+  - fzf
+  - neofetch
+  - python3
+  - ripgrep
+  - tldr
+  - tree
+  - wget
+  - zoxide
+
+
