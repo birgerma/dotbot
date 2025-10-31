@@ -4,3 +4,6 @@
 [submodule "meta/plugins/dotbot-paru"]
 	path = meta/plugins/dotbot-paru
 	url = https://github.com/michaelray27/dotbot-paru.git
+[submodule "external/keyd"]
+	path = external/keyd
+	url = https://github.com/rvaiya/keyd
