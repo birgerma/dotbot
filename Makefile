@@ -8,9 +8,10 @@ update:
 base:
 	${DOTBOT} -p ${PARU} -c ./meta/configs/base.packages.conf.yaml
 
-setup-sway:
-	./meta/dotbot/bin/dotbot -p ./meta/plugins/dotbot-paru/paru.py -c ./meta/configs/sway.packages.conf.yaml
-	./install-standalone sway-config
+setup-i3:
+	#./meta/dotbot/bin/dotbot -p ./meta/plugins/dotbot-paru/paru.py -c ./meta/configs/sway.packages.conf.yaml
+	#./install-standalone sway-config
+	sudo qubes-dom0-update i3 i3-settings-qubes
 
 setup-keyd:
 	sudo ln -sf ${PWD}/keyd/* /etc/keyd/
