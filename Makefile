@@ -11,3 +11,6 @@ base:
 setup-sway:
 	./meta/dotbot/bin/dotbot -p ./meta/plugins/dotbot-paru/paru.py -c ./meta/configs/sway.packages.conf.yaml
 	./install-standalone sway-config
+
+setup-keyd:
+	sudo ln -sf ${PWD}/keyd/* /etc/keyd/
