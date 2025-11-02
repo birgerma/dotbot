@@ -16,3 +16,8 @@ setup-i3:
 
 setup-keyd:
 	sudo ln -sf ${PWD}/keyd/* /etc/keyd/
+
+setup-rofi:
+	sudo qubes-dom0-update rofi
+	ln -sf ${PWD}/rofi ${HOME}/.config/rofi
+	
