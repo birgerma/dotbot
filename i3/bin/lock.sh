@@ -4,5 +4,5 @@
 i3lock --nofork \
   --ignore-empty-password \
   --show-failed-attempts \
-  --keylayout \
+  --show-keyboard-layout \
   --image=~/.config/i3/img/lockscreen.jpg
