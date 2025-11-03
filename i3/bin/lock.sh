@@ -2,7 +2,6 @@
 
 # exec --no-startup-id 
 i3lock --nofork \
-  --ignore-empty-password \
-  --show-failed-attempts \
-  --show-keyboard-layout \
-  --image=~/.config/i3/img/lockscreen.jpg
+  -e \ # ignore-empty-password \
+  -f \ # show-failed-attempts \
+  -i $HOME/.config/i3/img/lockscreen.png # image
