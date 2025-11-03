@@ -13,6 +13,24 @@ qvm-run -u user --pass-io <AppVM> "cd <path/to/AppVM/repo> && git bundle create 
 cd ~/.config/ && git clone -b master /tmp/git.bundle repo
 ```
 
+### Software and packages
+
+## Keyd
+Easiest to build from source
+Clone repository ```https://github.com/rvaiya/keyd``` to AppVM and move to dom0 with:
+```qvm-run --pass-io "$VMNAME" "tar c -C '${DIRNAME}' '${BASENAME}'" | tar x "$BASENAME"```
+
+Install dependency ```gcc``` in dom0:
+```sudo qubes-dom0-update gcc```
+Build according to instructions, at the time of writing they are:
+```
+make && sudo make install
+sudo systemctl enable --now keyd
+```
+
+Add custom config file ```/etc/keyd/default.conf```
+Run ```systemctl start keyd```
+
 
 # Dotbot Template
 
