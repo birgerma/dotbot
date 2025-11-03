@@ -19,7 +19,7 @@ font pango:monospace 18
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
-exec --no-startup-id setxkbmap eur
+exec_always --no-startup-id setxkbmap eur
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
