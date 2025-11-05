@@ -22,7 +22,7 @@ font pango:monospace 18
 exec_always --no-startup-id setxkbmap eur
 
 # For some reason active-opacity setting in config is not used
-exec_always picom 
+exec_always picom
 # exec_always picom --active-opacity 0.5
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
@@ -31,7 +31,7 @@ exec_always picom
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 #exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.config/i3/i3lock/lock --nofork
+exec_always --no-startup-id xss-lock --transfer-sleep-lock -- ~/.config/i3/i3lock/lock
 
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
