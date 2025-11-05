@@ -22,7 +22,8 @@ font pango:monospace 18
 exec_always --no-startup-id setxkbmap eur
 
 # For some reason active-opacity setting in config is not used
-exec_always picom --active-opacity 0.5 
+exec_always picom 
+# exec_always picom --active-opacity 0.5
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
