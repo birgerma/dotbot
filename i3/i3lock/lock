@@ -62,7 +62,7 @@ OUTPUT_IMG_HEIGHT=0 # Decide size to cover all screens
 if [ "$lock_cmd" ]; then
         LOCK_BASE_CMD="$lock_cmd"
 else
-        LOCK_BASE_CMD="i3lock -i $OUTPUT_IMG"
+        LOCK_BASE_CMD="i3lock --nofork -i $OUTPUT_IMG"
 fi
 
 if [ "$lock_args" ]; then
