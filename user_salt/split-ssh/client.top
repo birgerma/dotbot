@@ -1,0 +1,13 @@
+
+user:
+  dom0:
+    - split-ssh.client.vm
+
+  fedora-41-custom:
+    - split-ssh.client.packages
+
+  personal:
+    - split-ssh.client.sock
+
+  work:
+    - split-ssh.client.sock

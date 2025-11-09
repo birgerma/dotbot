@@ -1,0 +1,11 @@
+
+# 
+# Ensure the SSH socket is discoverable
+#
+# See /srv/user_salt/split-ssh in dom0 for details
+SSH_VAULT_VM="vault"
+
+if [[ "$SSH_VAULT_VM" != "" ]]; then
+	export SSH_AUTH_SOCK=~user/.SSH_AGENT_$SSH_VAULT_VM
+fi
+##################################################
