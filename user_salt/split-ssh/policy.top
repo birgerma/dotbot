@@ -1,0 +1,4 @@
+
+user:
+  dom0:
+    - split-ssh.policy

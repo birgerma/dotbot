@@ -29,3 +29,28 @@ setup-rofi-powermenu:
 	ln -sf ${PWD}/rofi-scripts/fonts/* ${HOME}/.local/share/fonts/
 	ln -sf ${PWD}/rofi-scripts/colors/ ${HOME}/.config/rofi-scripts/colors
 
+setup-qubes:
+	sudo qubesctl --targets=fedora-41-custom state.apply base-packages
+	sudo qubesctl state.sls vms
+
+
+salt-enable-user-dirs:
+	sudo qubesctl top.enable qubes.user-dirs
+	sudo qubesctl top.enabled
+#	sudo qubesctl top.disable qubes.user-dirs
+
+salt.apply:
+	sudo qubesctl state.apply
+
+salt.apply.split-ssh:
+	sudo qubesctl state.apply split-ssh.client.vm,split-ssh.vault.vm saltenv=user
+	sudo qubesctl --skip-dom0 --target=fedora-41-custom state.apply split-ssh.client.packages saltenv=user
+	sudo qubesctl --skip-dom0 --target=fedora-41-custom state.apply split-ssh.vault.packages saltenv=user
+	sudo qubesctl top.enable split-ssh.client split-ssh.policy split-ssh.vault
+	sudo qubesctl --target=fedora-41-custom,ssh-client,ssh-vault state.apply
+	sudo qubesctl --skip-dom0 --target=vault state.apply
+	sudo qubesctl --skip-dom0 --target=personal state.apply
+
+salt.setup.qubes:
+	sudo qubesctl --target=fedora-41-custom,work,personal,vault state.apply
+	
