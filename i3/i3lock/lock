@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# Ignore lock if focused window is fullscreen
+FOCUSED=$(xprop -root _NET_ACTIVE_WINDOW | awk -F' ' '{print $NF}')
+
+if xprop -id ${FOCUSED} _NET_WM_STATE | grep -q _NET_WM_STATE_FULLSCREEN; then
+	echo 'is fullscreen'
+	exit 0
+else
+	echo 'is not fullscreen'
+fi
+
 # Stolen from: ShikherVerma/i3lock-multimonitor
 #Constants
 DISPLAY_RE="([0-9]+)x([0-9]+)\\+([0-9]+)\\+([0-9]+)" # Regex to find display dimensions
