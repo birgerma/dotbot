@@ -15,6 +15,10 @@ setup-i3:
 	ln -sf ${PWD}/i3 ${HOME}/.config/i3
 	ln -sf ${PWD}/picom ${HOME}/.config/picom
 
+setup-wlogout:
+	sudo qubes-dom0-update wlogout
+	ln -sf ${PWD}/wlogout ${HOME}/.config/wlogout
+
 setup-keyd:
 	sudo ln -sf ${PWD}/keyd/* /etc/keyd/
 

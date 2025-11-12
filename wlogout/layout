@@ -1,35 +1,35 @@
 {
     "label" : "lock",
-    "action" : "swaylock",
-    "text" : "Lock",
+    "action" : "$HOME/.config/i3/i3lock/lock",
+    "text" : "[l] Lock",
     "keybind" : "l",
     "circular": true,
 }
 {
     "label" : "logout",
     "action" : "loginctl terminate-user $USER",
-    "text" : "Logout",
+    "text" : "[e] Logout",
     "keybind" : "e"
     "circular": true,
 }
 {
     "label" : "shutdown",
     "action" : "systemctl poweroff",
-    "text" : "Shutdown",
+    "text" : "[s] Shutdown",
     "keybind" : "s"
     "circular": true,
 }
 {
     "label" : "suspend",
     "action" : "systemctl suspend -i",
-    "text" : "Suspend",
+    "text" : "[u] Suspend",
     "keybind" : "u"
     "circular": true,
 }
 {
     "label" : "reboot",
     "action" : "systemctl reboot",
-    "text" : "Reboot",
+    "text" : "[r] Reboot",
     "keybind" : "r"
     "circular": true,
 }
