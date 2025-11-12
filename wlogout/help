@@ -1,0 +1,19 @@
+Usage: wlogout [options...]
+
+   -h, --help                      Show help message and stop
+   -l, --layout </path/to/layout>  Specify a layout file
+   -v, --version                   Show version number and stop
+   -C, --css </path/to/css>        Specify a css file
+   -b, --buttons-per-row <0-x>     Set the number of buttons per row
+   -c  --column-spacing <0-x>      Set space between buttons columns
+   -r  --row-spacing <0-x>         Set space between buttons rows
+   -m, --margin <0-x>              Set margin around buttons
+   -L, --margin-left <0-x>         Set margin for left of buttons
+   -R, --margin-right <0-x>        Set margin for right of buttons
+   -T, --margin-top <0-x>          Set margin for top of buttons
+   -B, --margin-bottom <0-x>       Set margin for bottom of buttons
+   -p, --protocol <protocol>       Use layer-shell or xdg protocol
+   -s, --show-binds                Show the keybinds on their corresponding button
+   -n, --no-span                   Stops from spanning across multiple monitors
+   -P, --primary-monitor <0-x>     Set the primary monitor
+
