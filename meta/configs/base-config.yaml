@@ -1,0 +1,15 @@
+- defaults:
+    link:
+      relink: true
+      create: true
+
+- link:
+    $HOME/.config/fish: fish/
+    $HOME/.config/starship: starship/
+    $HOME/.config/tmux: tmux/
+    $HOME/.config/nvim: nvim/
+    $HOME/.config/alacritty: alacritty/
+    ~/.local/bin:
+      path: bin/**
+      glob: true
+      create: true   
