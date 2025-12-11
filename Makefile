@@ -29,3 +29,7 @@ setup-rofi:
 	sudo qubes-dom0-update rofi
 	ln -sf ${PWD}/rofi ${HOME}/.config/rofi
 	
+setup-doom-emacs:
+	ln -sf ${PWD}/doom ${HOME}/.config/doom
+	git clone https://github.com/hlissner/doom-emacs ~/.config/emacs
+	~/.config/emacs/bin/doom install
