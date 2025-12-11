@@ -41,3 +41,8 @@ if test -e ~/.config/fish/vm/$CONTAINER_ID/config.fish
 	source ~/.config/fish/vm/$CONTAINER_ID/config.fish
 end
 
+# Source nix configuration
+if test -e ~/.nix-profile/etc/profile.d/nix.fish
+    source ~/.nix-profile/etc/profile.d/nix.fish
+end # added by Nix installer
+
