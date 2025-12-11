@@ -41,3 +41,4 @@ if test -e ~/.config/fish/vm/$CONTAINER_ID/config.fish
 	source ~/.config/fish/vm/$CONTAINER_ID/config.fish
 end
 
+direnv hook fish | source
