@@ -15,6 +15,13 @@ setup-i3:
 	ln -sf ${PWD}/i3 ${HOME}/.config/i3
 	ln -sf ${PWD}/picom ${HOME}/.config/picom
 
+setup-qmenu:
+	mkdir -p ${HOME}/.local/bin
+	ln -sf ${PWD}/qubes-misc/qmenu/qmenu-am ${HOME}/.local/bin/qmenu-am
+	ln -sf ${PWD}/qubes-misc/qmenu/qmenu-dm ${HOME}/.local/bin/qmenu-dm
+	ln -sf ${PWD}/qubes-misc/qmenu/qmenu-vm ${HOME}/.local/bin/qmenu-vm
+
+
 setup-wlogout:
 	sudo qubes-dom0-update wlogout
 	ln -sf ${PWD}/wlogout ${HOME}/.config/wlogout
