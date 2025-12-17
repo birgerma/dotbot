@@ -78,7 +78,8 @@ fi
 if [ "$lock_args" ]; then
         LOCK_ARGS="$lock_args"  # Passed command
 else
-        LOCK_ARGS="-t -e"  # Default
+        # LOCK_ARGS="-t -e"  # Default
+        LOCK_ARGS="-t"  # Default
 fi
 LOCK_CMD="$LOCK_BASE_CMD $LOCK_ARGS"
 
