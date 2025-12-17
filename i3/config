@@ -19,7 +19,9 @@ font pango:monospace 12
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
-exec_always --no-startup-id setxkbmap eur
+exec_always --no-startup-id setxkbmap eu
+
+# exec_always --no-startup-id killall polybar; polybar
 
 # For some reason active-opacity setting in config is not used
 # exec_always picom
@@ -31,14 +33,19 @@ exec_always --no-startup-id setxkbmap eur
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 #exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec_always --no-startup-id xset 180 120
-exec_always --no-startup-id xss-lock -n /usr/share/doc/xss-lock/dim-screen.sh --transfer-sleep-lock -- ~/.config/i3/i3lock/lock
+exec_always --no-startup-id xset s 180 120
+exec_always --no-startup-id xss-lock -n ~/.config/i3/i3lock/dim-screen.sh --transfer-sleep-lock -- ~/.config/i3/i3lock/lock
 
 # Use pactl to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && qvm-run flatpak pactl set-sink-volume @DEFAULT_SINK@ +10%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && qvm-run flatpak pactl set-sink-volume @DEFAULT_SINK@ -10%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+bindsym XF86AudioPlay exec --no-startup-id qvm-run flatpak playerctl play-pause 
+bindsym XF86AudioPause exec --no-startup-id qvm-run flatpak playerctl play-pause 
+bindsym XF86AudioNext exec --no-startup-id qvm-run flatpak playerctl next
+bindsym XF86AudioPrev exec --no-startup-id qvm-run flatpak playerctl previous 
 # Optional: Use amixer as pactl over amplifies volume above 100%.
 #bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q sset Master 10%+ unmute
 #bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 10%- unmute
@@ -249,8 +256,10 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
+#	tray_output eDP-1
 bar {
         status_command qubes-i3status
+	#tray_output DP-1
         colors {
             background #d2d2d2
             statusline #333333
@@ -262,6 +271,20 @@ bar {
             urgent_workspace     #bd2727 #e79e27 #333333
         }
 }
+
+set $mode_menu [a]Application Menu, [d]Device Menu, [v]VM Menu
+mode "$mode_menu" {
+ bindsym a exec qmenu-am --all, mode "default"
+ bindsym d exec qmenu-dm --all, mode "default"
+ bindsym v exec qmenu-vm --all, mode "default"
+
+ bindsym Return mode "default"
+ bindsym Escape mode "default"
+}
+bindsym $mod+Escape mode "$mode_menu"
+
+### Custom configuration ###
+bindsym $mod+F5 exec qvm-run mullvad-vpn "mullvad reconnect"
 
 # Make sure all xdg autostart entries are started, this is (among other things)
 # necessary to make sure transient vm's come up
