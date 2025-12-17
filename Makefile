@@ -17,6 +17,8 @@ setup-base:
 	./install-standalone base-config
 
 
+setup-direnv:
+	ln -sf ${PWD}/direnv ${HOME}/.config/direnv
 
 setup-i3:
 	#./meta/dotbot/bin/dotbot -p ./meta/plugins/dotbot-paru/paru.py -c ./meta/configs/sway.packages.conf.yaml
