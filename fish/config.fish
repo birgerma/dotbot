@@ -47,3 +47,9 @@ if test -e ~/.nix-profile/etc/profile.d/nix.fish
     source ~/.nix-profile/etc/profile.d/nix.fish
 end # added by Nix installer
 
+# Source nix configuration
+if test -e ~/.nix-profile/etc/profile.d/nix.fish
+    source ~/.nix-profile/etc/profile.d/nix.fish
+end # added by Nix installer
+
+direnv hook fish | source

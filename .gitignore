@@ -4,3 +4,6 @@ credentials.*
 .pkrvars.hcl
 *.pkrvars.hcl
 .nvimlog
+
+# Fish config
+fish/fish_variables

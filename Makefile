@@ -24,6 +24,8 @@ setup-oh-my-tmux: oh-my-tmux
 	ln -s ${PWD}/oh-my-tmux-private/ ${HOME}/.config/tmux
 	ln -s ${PWD}/oh-my-tmux/.tmux.conf ${HOME}/.config/tmux/tmux.conf
 
+setup-direnv:
+	ln -sf ${PWD}/direnv ${HOME}/.config/direnv
 
 setup-i3:
 	#./meta/dotbot/bin/dotbot -p ./meta/plugins/dotbot-paru/paru.py -c ./meta/configs/sway.packages.conf.yaml
@@ -36,3 +38,7 @@ setup-rofi:
 	sudo qubes-dom0-update rofi
 	ln -sf ${PWD}/rofi ${HOME}/.config/rofi
 	
+setup-doom-emacs:
+	ln -sf ${PWD}/doom ${HOME}/.config/doom
+	git clone https://github.com/hlissner/doom-emacs ~/.config/emacs
+	~/.config/emacs/bin/doom install
