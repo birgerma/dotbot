@@ -16,7 +16,16 @@ setup-base:
 	#./meta/dotbot/bin/dotbot -c ./meta/configs/base-config.yaml
 	./install-standalone base-config
 
+oh-my-tmux:
+	git clone --single-branch https://github.com/gpakosz/.tmux.git "./oh-my-tmux"
 
+setup-oh-my-tmux: oh-my-tmux
+	unlink ~/.config/tmux || true
+	ln -s ${PWD}/oh-my-tmux-private/ ${HOME}/.config/tmux
+	ln -s ${PWD}/oh-my-tmux/.tmux.conf ${HOME}/.config/tmux/tmux.conf
+
+setup-direnv:
+	ln -sf ${PWD}/direnv ${HOME}/.config/direnv
 
 setup-i3:
 	#./meta/dotbot/bin/dotbot -p ./meta/plugins/dotbot-paru/paru.py -c ./meta/configs/sway.packages.conf.yaml

@@ -10,8 +10,8 @@ alias fyay='\yay -Slq | fzf --multi --preview "\yay -Si {1}" | xargs -ro \yay -S
 
 export EMACS_USER_DIRECTORY=~/.config/emacs/
 export ALTERNATE_EDITOR=""
-export EDITOR="emacsclient -t"                  # $EDITOR opens in terminal
-export VISUAL="emacsclient -c -a emacs"         # $VISUAL opens in GUI mode      
+export EDITOR="nvim"                  # $EDITOR opens in terminal
+export VISUAL="nvim"         # $VISUAL opens in GUI mode      
 
 # export BROWSER="nbrowser"
 export TMUX_TMPDIR=/var/tmp
@@ -37,8 +37,19 @@ zoxide init fish --cmd cd| source
 export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
 starship init fish | source
 
-if test -e ~/.config/fish/vm/$CONTAINER_ID/config.fish 
-	source ~/.config/fish/vm/$CONTAINER_ID/config.fish
-end
+# if test -e ~/.config/fish/vm/$CONTAINER_ID/config.fish 
+#     echo 'source container conf'
+# 	source ~/.config/fish/vm/$CONTAINER_ID/config.fish
+# end
+
+# Source nix configuration
+if test -e ~/.nix-profile/etc/profile.d/nix.fish
+    source ~/.nix-profile/etc/profile.d/nix.fish
+end # added by Nix installer
+
+# Source nix configuration
+if test -e ~/.nix-profile/etc/profile.d/nix.fish
+    source ~/.nix-profile/etc/profile.d/nix.fish
+end # added by Nix installer
 
 direnv hook fish | source
