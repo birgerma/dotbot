@@ -31,5 +31,5 @@ setup-rofi:
 	
 setup-doom-emacs:
 	ln -sf ${PWD}/doom ${HOME}/.config/doom
-	git clone https://github.com/hlissner/doom-emacs ~/.config/emacs
+	git clone https://github.com/hlissner/doom-emacs ~/.config/emacs || true
 	~/.config/emacs/bin/doom install
