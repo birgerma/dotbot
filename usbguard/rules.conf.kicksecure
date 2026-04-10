@@ -1,0 +1,81 @@
+## Source: https://raw.githubusercontent.com/Kicksecure/security-misc/refs/heads/master/etc/usbguard/rules.d/30_security-misc.conf%23security-misc-shared
+## Use usbguard to generate a policy of currently connected devices to get the hashes of what you acctually want
+## Remove the lines regarding accepting any keyboard/mouse to only accept specific devices.
+## Note that this is especially important when using the mx master and similar, since they identify as keyboards
+## Remove port and parent hashes to be able to use any dock and port
+## We allow devices that were plugged in before the daemon starts. Everything
+## is blocked as the default. Following rules apply on top of this.
+
+## First match wins. Therefore, reject rules should be on the top.
+## Quote:
+## https://usbguard.github.io/documentation/rule-language
+## > the daemon scans the existing rules sequentially
+
+## Explicitly reject any interface that is not documented and/or defined by
+## USB.org.
+## Note: Most probably superfluous.
+reject with-interface none-of { 00:*:* 01:*:* 02:*:* 03:*:* 05:*:* 06:*:* 07:*:* 08:*:* 09:*:* 0a:*:* 0b:*:* 0d:*:* 0e:*:* 0f:*:* 10:*:* 11:*:* 12:*:* 13:*:* 14:*:* 3c:*:* dc:*:* e0:*:* ef:*:* fe:*:* ff:*:* }
+
+## Explicitly reject any device with a mouse/keyboard interface in
+## combination with some other interface.
+## Mice and keyboards should likely never have non-HID interfaces provided
+## alongside them.
+reject with-interface all-of { 03:*:* 00:*:* }
+reject with-interface all-of { 03:*:* 01:*:* }
+reject with-interface all-of { 03:*:* 02:*:* }
+reject with-interface all-of { 03:*:* 05:*:* }
+reject with-interface all-of { 03:*:* 06:*:* }
+reject with-interface all-of { 03:*:* 07:*:* }
+reject with-interface all-of { 03:*:* 08:*:* }
+reject with-interface all-of { 03:*:* 09:*:* }
+reject with-interface all-of { 03:*:* 0a:*:* }
+reject with-interface all-of { 03:*:* 0b:*:* }
+reject with-interface all-of { 03:*:* 0d:*:* }
+reject with-interface all-of { 03:*:* 0e:*:* }
+reject with-interface all-of { 03:*:* 0f:*:* }
+reject with-interface all-of { 03:*:* 10:*:* }
+reject with-interface all-of { 03:*:* 11:*:* }
+reject with-interface all-of { 03:*:* 12:*:* }
+reject with-interface all-of { 03:*:* 13:*:* }
+reject with-interface all-of { 03:*:* 14:*:* }
+reject with-interface all-of { 03:*:* 3c:*:* }
+reject with-interface all-of { 03:*:* dc:*:* }
+reject with-interface all-of { 03:*:* e0:*:* }
+reject with-interface all-of { 03:*:* ef:*:* }
+reject with-interface all-of { 03:*:* fe:*:* }
+reject with-interface all-of { 03:*:* ff:*:* }
+
+## Explicitly reject any device with an RNDIS interface. RNDIS is believed to
+## have protocol-level buffer overflow vulnerabilities that cannot be fixed.
+reject with-interface one-of { ef:04:* }
+
+## Allow all mouses and keyboards, in a sense, so the user can conveniently
+## change them without restrating the daemon.
+
+## Allow only one keyboard to be connected
+allow with-interface equals { 03:01:01 } if !allowed-matches(with-interface equals { 03:01:01 })
+## Allow only one mouse to be connected
+allow with-interface equals { 03:01:02 } if !allowed-matches(with-interface equals { 03:01:02 })
+## NOTE: Some HID devices will have an interface of 03:00:00 - these are HID
+## devices that do not support a "boot interface". **These are blocked
+## entirely.** It is very likely that this will cause issues with some mice
+## and keyboards. Also note, all HID devices other than mice and keyboards
+## will be blocked, **including touchscreens.**
+
+## Allow USB audio devices. The intended functionality of these devices is
+## unlikely to be usable in a malicious capacity without having already
+## compromised the machine.
+allow with-interface equals { 01:*:* }
+
+## Allow USB video devices (i.e. webcams). Also tricky to use in a malicious
+## manner without having already compromised the machine.
+allow with-interface equals { 0e:*:* }
+
+## Allow USB mass storage, if and only if the USB device only has the mass
+## storage interface and nothing extra.
+## Suspicious interface combinations with mass storage are blocked.
+allow with-interface equals { 08:*:* }
+
+## Allow USB hubs, these are likely safe and are required for Qubes OS USB
+## passthrough to work.
+allow with-interface equals { 09:*:* }
