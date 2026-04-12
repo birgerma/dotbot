@@ -284,8 +284,9 @@ mode "$mode_menu" {
 bindsym $mod+Escape mode "$mode_menu"
 
 ### Custom configuration ###
-bindsym $mod+F5 exec qvm-run mullvad-vpn "mullvad reconnect"
+bindsym $mod+Control+r exec qvm-run mullvad-vpn mullvad reconnect
 
+# bindsym $mod+F5 mode "$mode_menu"
 # Make sure all xdg autostart entries are started, this is (among other things)
 # necessary to make sure transient vm's come up
 exec --no-startup-id qubes-i3-xdg-autostart
