@@ -286,6 +286,10 @@ bindsym $mod+Escape mode "$mode_menu"
 ### Custom configuration ###
 bindsym $mod+Control+r exec qvm-run mullvad-vpn mullvad reconnect
 
+
+## Workspace rules
+for_window [instance=".*vault:keepassxc.*"] move scratchpad
+for_window [instance=".*mullvad-vpn:mullvad vpn.*"] move scratchpad
 # bindsym $mod+F5 mode "$mode_menu"
 # Make sure all xdg autostart entries are started, this is (among other things)
 # necessary to make sure transient vm's come up
